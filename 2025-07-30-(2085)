@@ -1,0 +1,31 @@
+class Solution {
+    public int countWords(String[] words1, String[] words2) {
+        HashMap<String,Integer> freq= new HashMap<>();
+        HashMap<String,Integer> freq1= new HashMap<>();
+        for(String i:words1){
+            freq.put(i,freq.getOrDefault(i,0)+1);
+        }
+         for(String i:words2){
+            freq1.put(i,freq1.getOrDefault(i,0)+1);
+        }
+        ArrayList<String> ans=new ArrayList<>();
+        for(String j:freq.keySet()){
+            if(freq.get(j)==1){
+                ans.add(j);
+            }
+        }
+         ArrayList<String> ans1=new ArrayList<>();
+        for(String m:freq1.keySet()){
+            if(freq1.get(m)==1){
+                ans1.add(m);
+            }
+        }
+        int count=0;
+        for(int i=0;i<ans.size();i++){
+            if(ans1.contains(ans.get(i))){
+                count++;
+            }
+        } 
+        return count;
+    }
+}
